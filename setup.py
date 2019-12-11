@@ -17,5 +17,6 @@ setup(
     install_requires=[],
     packages=packages,
     package_data={
-        '': ['*.txt', '*.rst']
+        '': ['*.txt', '*.rst'],
+        'yamldict': ['py.typed'],
     })

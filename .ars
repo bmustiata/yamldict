@@ -1,0 +1,4 @@
+arg0: yamldict
+templates:
+- py3/lib
+yamldict: true

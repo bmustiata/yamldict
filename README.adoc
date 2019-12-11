@@ -1,0 +1,10 @@
+# yamldict
+
+yamldict program.
+
+## Installation
+
+```sh
+pip install yamldict
+```
+

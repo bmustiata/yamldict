@@ -4,7 +4,7 @@ import yaml
 
 
 # FIXME: move this to its own library: YamlDict seems a good name
-from adhesive.workspace.kube.YamlNavigator import YamlNavigator
+from yamldict.YamlNavigator import YamlNavigator
 
 
 class YamlList(YamlNavigator[List[Any]]):
@@ -14,8 +14,8 @@ class YamlList(YamlNavigator[List[Any]]):
     """
     def __init__(self,
                  *args,
-                 content: Optional[List]=None,
-                 property_name: str=""):
+                 content: Optional[List] = None,
+                 property_name: str = ""):
         if args:
             raise Exception("You need to pass the argument names")
 
@@ -73,8 +73,8 @@ class YamlList(YamlNavigator[List[Any]]):
         return f"YamlList({self.__property_name}) {self.__content}"
 
 
-from adhesive.workspace.kube.YamlDict import YamlDict
-from adhesive.workspace.kube.YamlIteratorWrapper import YamlIteratorWrapper
+from yamldict.YamlDict import YamlDict
+from yamldict.YamlIteratorWrapper import YamlIteratorWrapper
 
 
 def yaml_representer(dumper, data):

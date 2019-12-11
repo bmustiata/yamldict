@@ -2,8 +2,8 @@ import unittest
 import copy
 import yaml
 
-from adhesive.workspace.kube.YamlDict import YamlDict
-from adhesive.workspace.kube.YamlNavigator import YamlNavigator
+from yamldict.YamlDict import YamlDict
+from yamldict.YamlNavigator import YamlNavigator
 
 
 class YamlDictTest(unittest.TestCase):
@@ -31,7 +31,7 @@ class YamlDictTest(unittest.TestCase):
             "items": [1, 2, 3]
         })
 
-        self.assertEqual([1,2,3], p["items"]._raw)
+        self.assertEqual([1, 2, 3], p["items"]._raw)
 
     def test_write_with_property(self):
         p = YamlDict(content={
@@ -75,7 +75,7 @@ class YamlDictTest(unittest.TestCase):
 
         items = dict()
 
-        for k,v in p._items():
+        for k, v in p._items():
             items[k] = v
 
         self.assertDictEqual({
@@ -195,6 +195,7 @@ class YamlDictTest(unittest.TestCase):
 
         data = yaml.safe_dump(a)
         print(data)
+
 
 if __name__ == '__main__':
     unittest.main()

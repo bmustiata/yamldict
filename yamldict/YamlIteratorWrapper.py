@@ -91,5 +91,5 @@ def convert_type(*args,
     return value
 
 
-from adhesive.workspace.kube.YamlDict import YamlDict
-from adhesive.workspace.kube.YamlList import YamlList
+from yamldict.YamlDict import YamlDict
+from yamldict.YamlList import YamlList

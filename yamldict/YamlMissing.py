@@ -1,6 +1,6 @@
-from typing import Any, Union, Optional, List, Dict
+from typing import Any, Union, List, Dict
 
-from adhesive.workspace.kube.YamlNavigator import YamlNavigator
+from yamldict.YamlNavigator import YamlNavigator
 
 
 class YamlMissing(YamlNavigator[None]):
@@ -107,4 +107,4 @@ class YamlMissing(YamlNavigator[None]):
             full_property_name=self.__full_property_name)
 
 
-from adhesive.workspace.kube.YamlDict import YamlDict
+from yamldict.YamlDict import YamlDict

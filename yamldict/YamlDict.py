@@ -5,7 +5,7 @@ import yaml
 
 from yaml import SafeDumper
 
-from adhesive.workspace.kube.YamlNavigator import YamlNavigator
+from yamldict.YamlNavigator import YamlNavigator
 
 
 class YamlDict(YamlNavigator[Dict[str, Any]]):
@@ -15,8 +15,8 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
     """
     def __init__(self,
                  *args,
-                 content: Optional[Dict]=None,
-                 property_name: Optional[str]=""):
+                 content: Optional[Dict] = None,
+                 property_name: Optional[str] = ""):
         if args:
             raise Exception("You need to pass the named arguments")
 
@@ -38,7 +38,7 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
             return self.__property_name
 
         # FIXME I'm not sure why the YamlMissing gets called here even from the parent
-        if item == '_YamlDict__create_if_missing' or  item == '_YamlMissing__create_if_missing':
+        if item == '_YamlDict__create_if_missing' or item == '_YamlMissing__create_if_missing':
             return self.__create_if_missing
 
         if item not in self.__content:
@@ -116,9 +116,9 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
         return f"YamlDict({self.__property_name}) {self.__content}"
 
 
-from adhesive.workspace.kube.YamlList import YamlList
-from adhesive.workspace.kube.YamlIteratorWrapper import YamlIteratorWrapper, YamlDictWrapper
-from adhesive.workspace.kube.YamlMissing import YamlMissing
+from yamldict.YamlList import YamlList
+from yamldict.YamlIteratorWrapper import YamlIteratorWrapper, YamlDictWrapper
+from yamldict.YamlMissing import YamlMissing
 
 
 def yaml_representer(dumper, data):

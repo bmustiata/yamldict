@@ -1,14 +1,14 @@
 import unittest
 import copy
 
-from adhesive.workspace.kube.YamlDict import YamlDict
-from adhesive.workspace.kube.YamlList import YamlList
-from adhesive.workspace.kube.YamlNavigator import YamlNavigator
+from yamldict.YamlDict import YamlDict
+from yamldict.YamlList import YamlList
+from yamldict.YamlNavigator import YamlNavigator
 
 
 class YamlListTest(unittest.TestCase):
     def test_simple_property_read(self):
-        p = YamlList(content=[{"x":3}])
+        p = YamlList(content=[{"x": 3}])
 
         self.assertEqual(3, p[0].x)
 
@@ -31,7 +31,7 @@ class YamlListTest(unittest.TestCase):
     def test_read_via_get(self):
         p = YamlList(content=[[1, 2, 3]])
 
-        self.assertEqual([1,2,3], p[0]._raw)
+        self.assertEqual([1, 2, 3], p[0]._raw)
 
     def test_write_with_set(self):
         p = YamlList(content=["original"])

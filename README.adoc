@@ -1,6 +1,25 @@
 # yamldict
 
-yamldict program.
+A library that allows accessing `yaml` content as a kind of a dictionary.
+
+## Features
+
+. *not* a dictionary. That means properties such as `get` are still accessible
+   from the object.
+. Accessible via properties, _and_ via indexes:
++
+[source,python]
+-----------------------------------------------------------------------------
+assert myyaml["item"] == myyaml.item
+-----------------------------------------------------------------------------
+. Handles missing properties _without creating them_ unless asked:
++
+[source,python]
+-----------------------------------------------------------------------------
+assert not myyaml.this.property.does.not.exist
+myyaml.this.property = "3"  # only now the content is actually in the data
+-----------------------------------------------------------------------------
+. Serializable
 
 ## Installation
 

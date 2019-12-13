@@ -3,12 +3,9 @@ from typing import Iterator, Any, ItemsView
 
 class YamlIteratorWrapper:
     def __init__(self,
-                 *args,
+                 *,
                  property_name: str,
                  iter: Iterator):
-        if args:
-            raise Exception("You need to pass the arguments by name")
-
         self._property_name = property_name
         self._iter = iter
 
@@ -73,12 +70,9 @@ class YamlDictWrapper:
         )
 
 
-def convert_type(*args,
+def convert_type(*,
                  property_name: str,
                  value: Any) -> Any:
-    if args:
-        raise Exception("You need to pass the arguments by name")
-
     if isinstance(value, dict):
         return YamlDict(
             property_name=property_name,

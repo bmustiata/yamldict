@@ -1,24 +1,42 @@
-A library that allows accessing `yaml` content as a kind of a
-dictionary.
+\`Yamldict~ is a library that allows accessing YAML content as a kind of
+a dictionary. Its primary purpose is to allow reading and writing YAML
+content with ease.
+
+To achieve that it has the following features:
 
 Features
 ========
 
-1.  **not** a dictionary. That means properties such as `get` are still
-    accessible from the object.
+1.  Easy creation of complex structures from string or files:
 
-2.  Accessible via properties, *and* via indexes:
+        data = yamldict.create("""
+        - "item 1"
+        - "item 2"
+        """)
+
+2.  Not a dictionary. That means a property such as `get` is still
+    accessible from the object and isn’t a method on a dictionary.
+
+        >>> x = yamldict.YamlDict()
+        >>> x.get = "x"
+        >>> x
+        YamlDict() {'get': 'x'}
+
+3.  Accessible via properties, or indexes:
 
         assert myyaml["item"] == myyaml.item
 
-3.  Handles missing properties *without creating them* unless asked:
+4.  Handles chained missing properties without creating them unless
+    asked:
 
-        assert not myyaml.this.property.does.not.exist
-        myyaml.this.property = "3"  # only now the content is actually in the data
+        assert not myyaml.this.property.doesnt.exist
+        myyaml.some.other.property = "3"  # only now the content is in the data
 
-4.  Serializable
+5.  It supports deep copying.
 
-Installation
-============
+6.  It’s integrated as a PyYaml serializer.
 
-    pip install yamldict
+7.  Type support, so you don’t need to do anything in projects using
+    mypy.
+
+

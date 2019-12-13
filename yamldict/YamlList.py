@@ -13,12 +13,9 @@ class YamlList(YamlNavigator[List[Any]]):
     correctly wraps potentially nested dictionaries.
     """
     def __init__(self,
-                 *args,
+                 *,
                  content: Optional[List] = None,
                  property_name: str = ""):
-        if args:
-            raise Exception("You need to pass the argument names")
-
         super(YamlList, self).__init__()
 
         self.__content = content if content is not None else list()

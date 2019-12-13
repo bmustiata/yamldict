@@ -14,12 +14,9 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
     properties.
     """
     def __init__(self,
-                 *args,
+                 *,
                  content: Optional[Dict] = None,
                  property_name: Optional[str] = ""):
-        if args:
-            raise Exception("You need to pass the named arguments")
-
         super(YamlDict, self).__init__()
 
         self.__content = content if content is not None else dict()

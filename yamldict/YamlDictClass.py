@@ -113,7 +113,7 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
         return f"YamlDict({self.__property_name}) {self.__content}"
 
 
-from yamldict.YamlList import YamlList
+from yamldict.YamlListClass import YamlList
 from yamldict.YamlIteratorWrapper import YamlIteratorWrapper, YamlDictWrapper
 from yamldict.YamlMissing import YamlMissing
 

@@ -70,7 +70,7 @@ class YamlList(YamlNavigator[List[Any]]):
         return f"YamlList({self.__property_name}) {self.__content}"
 
 
-from yamldict.YamlDict import YamlDict
+from yamldict.YamlDictClass import YamlDict
 from yamldict.YamlIteratorWrapper import YamlIteratorWrapper
 
 

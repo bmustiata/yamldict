@@ -1,7 +1,7 @@
 import copy
 import unittest
 
-from yamldict.YamlDict import YamlDict
+from yamldict.YamlDictClass import YamlDict
 from yamldict.YamlMissing import YamlMissing
 
 

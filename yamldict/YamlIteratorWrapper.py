@@ -85,5 +85,5 @@ def convert_type(*,
     return value
 
 
-from yamldict.YamlDict import YamlDict
-from yamldict.YamlList import YamlList
+from yamldict.YamlDictClass import YamlDict
+from yamldict.YamlListClass import YamlList

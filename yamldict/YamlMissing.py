@@ -107,4 +107,4 @@ class YamlMissing(YamlNavigator[None]):
             full_property_name=self.__full_property_name)
 
 
-from yamldict.YamlDict import YamlDict
+from yamldict.YamlDictClass import YamlDict

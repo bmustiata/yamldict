@@ -2,7 +2,7 @@ import unittest
 import copy
 import yaml
 
-from yamldict.YamlDict import YamlDict
+from yamldict.YamlDictClass import YamlDict
 from yamldict.YamlNavigator import YamlNavigator
 
 

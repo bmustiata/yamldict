@@ -1,3 +1,4 @@
+import pickle
 import unittest
 import copy
 
@@ -126,6 +127,14 @@ class YamlListTest(unittest.TestCase):
         a[0] = b
 
         self.assertFalse(isinstance(a._raw[0], YamlNavigator))
+
+    def test_yaml_gets_pickle_serialized(self):
+        a = YamlList(
+            property_name="a",
+            content=["a"]
+        )
+
+        pickle.dumps(a)
 
 
 if __name__ == '__main__':

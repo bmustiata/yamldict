@@ -1,3 +1,4 @@
+import pickle
 import unittest
 import copy
 import yaml
@@ -195,6 +196,13 @@ class YamlDictTest(unittest.TestCase):
 
         data = yaml.safe_dump(a)
         print(data)
+
+    def test_yaml_gets_pickle_serialized(self):
+        a = YamlDict(content={
+            "x": 3
+        })
+
+        pickle.dumps(a)
 
 
 if __name__ == '__main__':

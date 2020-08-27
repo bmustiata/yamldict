@@ -28,6 +28,9 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
             content=copy.deepcopy(self._raw))
 
     def __getattr__(self, item):
+        if item.startswith("__") and item.endswith("__"):
+            raise AttributeError
+
         if item == '_YamlDict__content':
             return self.__content
 

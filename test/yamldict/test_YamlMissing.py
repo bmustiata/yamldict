@@ -1,4 +1,5 @@
 import copy
+import pickle
 import unittest
 
 from yamldict.YamlDictClass import YamlDict
@@ -45,6 +46,16 @@ class YamlMissingTest(unittest.TestCase):
         )
 
         a.x = True
+
+    def test_yaml_gets_pickle_serialized(self):
+        a = YamlMissing(
+            parent_property=None,
+            property_name="a",
+            full_property_name="x.a"
+        )
+
+        pickle.dumps(a)
+
 
 
 if __name__ == '__main__':

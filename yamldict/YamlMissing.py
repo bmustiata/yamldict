@@ -1,4 +1,4 @@
-from typing import Any, Union, List, Dict
+from typing import Any, Union, List, Dict, Optional
 
 from yamldict.YamlNavigator import YamlNavigator
 
@@ -8,7 +8,7 @@ class YamlMissing(YamlNavigator[None]):
 
     def __init__(self,
                  *args,
-                 parent_property: Union['YamlDict', 'YamlMissing'],
+                 parent_property: Optional[Union['YamlDict', 'YamlMissing']],
                  property_name: str,
                  full_property_name: str):
         if args:
@@ -23,7 +23,10 @@ class YamlMissing(YamlNavigator[None]):
         self.__full_property_name = full_property_name
         self.__parent_property = parent_property
 
-    def __getattr__(self, item):
+    def __getattr__(self, item: str) -> Any:
+        if item.startswith("__") and item.endswith("__"):
+            raise AttributeError
+
         if item == '_YamlMissing__parent_property':
             return self.__parent_property
 

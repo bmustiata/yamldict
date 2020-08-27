@@ -9,9 +9,8 @@ from yamldict.YamlMissing import YamlMissing
 class YamlMissingTest(unittest.TestCase):
     def test_deep_copy(self):
         missing_property = YamlMissing(
-            parent_property=None,
-            property_name="b",
-            full_property_name="a.b")
+            parent_property=None, property_name="b", full_property_name="a.b"
+        )
 
         copied = copy.deepcopy(missing_property)
 
@@ -20,9 +19,8 @@ class YamlMissingTest(unittest.TestCase):
 
     def test_get_item(self):
         missing_property = YamlMissing(
-            parent_property=None,
-            property_name="b",
-            full_property_name="a.b")
+            parent_property=None, property_name="b", full_property_name="a.b"
+        )
         self.assertFalse(missing_property["x"])
 
     def test_set_attribute(self):
@@ -40,23 +38,18 @@ class YamlMissingTest(unittest.TestCase):
     @unittest.expectedFailure
     def test_set_missing_fails(self):
         a = YamlMissing(
-            parent_property=None,
-            property_name="a",
-            full_property_name="x.a"
+            parent_property=None, property_name="a", full_property_name="x.a"
         )
 
         a.x = True
 
     def test_yaml_gets_pickle_serialized(self):
         a = YamlMissing(
-            parent_property=None,
-            property_name="a",
-            full_property_name="x.a"
+            parent_property=None, property_name="a", full_property_name="x.a"
         )
 
         pickle.dumps(a)
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

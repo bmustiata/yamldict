@@ -13,10 +13,12 @@ class TestCreateFunction(unittest.TestCase):
         Tests if creation of YAML works using
         yamldict.create() to get a dictionary.
         """
-        data = yamldict.create("""
+        data = yamldict.create(
+            """
           x: 3
           y: 4
-        """)
+        """
+        )
 
         self.assertEqual(3, data.x)
         self.assertEqual(4, data.y)
@@ -26,10 +28,12 @@ class TestCreateFunction(unittest.TestCase):
         Tests if creation of lists works
         using yamldict.create().
         """
-        data = yamldict.create("""
+        data = yamldict.create(
+            """
         - "item 1"
         - "item 2"
-        """)
+        """
+        )
 
         self.assertEqual(2, len(data))
         self.assertEqual("item 1", data[0])
@@ -39,15 +43,17 @@ class TestCreateFunction(unittest.TestCase):
         """
         Test if serializing data is working.
         """
-        data = yamldict.create("""
+        data = yamldict.create(
+            """
             x: 3
             y: 3
-        """)
+        """
+        )
 
         data_string = yaml.safe_dump(data)
         self.assertTrue("x: 3" in data_string)
         self.assertTrue("y: 3" in data_string)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

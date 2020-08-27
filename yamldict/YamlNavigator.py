@@ -1,7 +1,7 @@
 import abc
 from typing import TypeVar, Generic
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class YamlNavigator(abc.ABC, Generic[T]):

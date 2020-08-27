@@ -14,17 +14,12 @@ class YamlListTest(unittest.TestCase):
         self.assertEqual(3, p[0].x)
 
     def test_nested_property_read(self):
-        p = YamlDict(content={
-            "x": 3,
-            "y": {
-                "key": 1,
-                "list": [1, {
-                    "more": [1, {
-                        "nested": ["nested"]
-                    }]
-                }, 3]
+        p = YamlDict(
+            content={
+                "x": 3,
+                "y": {"key": 1, "list": [1, {"more": [1, {"nested": ["nested"]}]}, 3]},
             }
-        })
+        )
 
         self.assertEqual(1, p.y.key)
         self.assertEqual(["nested"], p.y.list[1].more[1].nested._raw)
@@ -86,23 +81,14 @@ class YamlListTest(unittest.TestCase):
         self.assertEqual([2, 3], p._raw)
 
     def test_repr(self):
-        p = YamlList(
-            property_name="a.b",
-            content=[1, 2, 3])
+        p = YamlList(property_name="a.b", content=[1, 2, 3])
 
         representation = f"{p}"
 
         self.assertEqual("YamlList(a.b) [1, 2, 3]", representation)
 
     def test_nested_repr(self):
-        p = YamlDict(
-            property_name="a.b",
-            content={
-                "x": [{
-                    "y": [1, 2, 3]
-                }]
-            }
-        )
+        p = YamlDict(property_name="a.b", content={"x": [{"y": [1, 2, 3]}]})
 
         representation = f"{p.x[0].y}"
         self.assertEqual("YamlList(a.b.x.0.y) [1, 2, 3]", representation)
@@ -114,14 +100,13 @@ class YamlListTest(unittest.TestCase):
         items = YamlList(content=[{"x": 1}])
 
         for item in items:
-            self.assertTrue(isinstance(item, YamlNavigator),
-                            "The iterated instance should be a navigator.")
+            self.assertTrue(
+                isinstance(item, YamlNavigator),
+                "The iterated instance should be a navigator.",
+            )
 
     def test_set_other_yaml_navigator(self):
-        a = YamlList(
-            property_name="a",
-            content=["a"]
-        )
+        a = YamlList(property_name="a", content=["a"])
         b = YamlDict()
 
         a[0] = b
@@ -129,13 +114,10 @@ class YamlListTest(unittest.TestCase):
         self.assertFalse(isinstance(a._raw[0], YamlNavigator))
 
     def test_yaml_gets_pickle_serialized(self):
-        a = YamlList(
-            property_name="a",
-            content=["a"]
-        )
+        a = YamlList(property_name="a", content=["a"])
 
         pickle.dumps(a)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

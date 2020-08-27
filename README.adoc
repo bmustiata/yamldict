@@ -47,5 +47,6 @@ YamlDict() {'some': {'other': {'property': '3'}}}
 -----------------------------------------------------------------------------
 . It supports deep copying.
 . It's integrated as a PyYaml serializer.
+. It supports pickle serialization.
 . Type support, so you don't need to do anything in projects using mypy.
 

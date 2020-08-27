@@ -13,10 +13,10 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
     A property navigator that allows accessing a dictionary via
     properties.
     """
-    def __init__(self,
-                 *,
-                 content: Optional[Dict] = None,
-                 property_name: Optional[str] = ""):
+
+    def __init__(
+        self, *, content: Optional[Dict] = None, property_name: Optional[str] = ""
+    ):
         super(YamlDict, self).__init__()
 
         self.__content = content if content is not None else dict()
@@ -24,39 +24,43 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
 
     def __deepcopy__(self, memodict={}):
         return YamlDict(
-            property_name=self.__property_name,
-            content=copy.deepcopy(self._raw))
+            property_name=self.__property_name, content=copy.deepcopy(self._raw)
+        )
 
     def __getattr__(self, item):
         if item.startswith("__") and item.endswith("__"):
             raise AttributeError
 
-        if item == '_YamlDict__content':
+        if item == "_YamlDict__content":
             return self.__content
 
-        if item == '_YamlDict__property_name':
+        if item == "_YamlDict__property_name":
             return self.__property_name
 
         # FIXME I'm not sure why the YamlMissing gets called here even from the parent
-        if item == '_YamlDict__create_if_missing' or item == '_YamlMissing__create_if_missing':
+        if (
+            item == "_YamlDict__create_if_missing"
+            or item == "_YamlMissing__create_if_missing"
+        ):
             return self.__create_if_missing
 
         if item not in self.__content:
             return YamlMissing(
                 parent_property=self,
                 property_name=item,
-                full_property_name=f"{self.__property_name}.{item}")
+                full_property_name=f"{self.__property_name}.{item}",
+            )
 
         result = self.__content[item]
 
         if isinstance(result, dict):
             return YamlDict(
-                property_name=f"{self.__property_name}.{item}",
-                content=result)
+                property_name=f"{self.__property_name}.{item}", content=result
+            )
         elif isinstance(result, list):
             return YamlList(
-                property_name=f"{self.__property_name}.{item}",
-                content=result)
+                property_name=f"{self.__property_name}.{item}", content=result
+            )
 
         return result
 
@@ -86,7 +90,7 @@ class YamlDict(YamlNavigator[Dict[str, Any]]):
     def __delitem__(self, key):
         self.__content.__delitem__(key)
 
-    def __create_if_missing(self) -> 'YamlDict':
+    def __create_if_missing(self) -> "YamlDict":
         return self
 
     def __iter__(self):

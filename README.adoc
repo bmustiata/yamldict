@@ -1,4 +1,4 @@
-# yamldict
+= yamldict
 
 `Yamldict` is a library that allows accessing YAML content as a kind of a
 dictionary.  Its primary purpose is to allow reading and writing YAML content
@@ -6,7 +6,7 @@ with ease.
 
 To achieve that it has the following features:
 
-## Features
+== Features
 
 . Easy creation of complex structures from string or files:
 +

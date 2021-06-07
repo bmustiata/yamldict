@@ -8,7 +8,7 @@ packages = find_packages()
 
 setup(
     name="yamldict",
-    version="1.0.0",
+    version="1.2.1",
     description="yamldict",
     long_description=readme,
     author="Bogdan Mustiata",

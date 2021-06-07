@@ -14,7 +14,9 @@ setup(
     author="Bogdan Mustiata",
     author_email="bogdan.mustiata@gmail.com",
     license="BSD",
-    install_requires=[],
+    install_requires=[
+        "PyYAML>=5.1.2",
+    ],
     packages=packages,
     package_data={
         "": ["*.txt", "*.rst"],
